@@ -8,6 +8,8 @@ namespace IfTask4
         {
             Console.WriteLine("Ohjelma lajittelee luvut nousevaan järjestykseen!");
             Console.WriteLine("Syötä kolme kokonaislukua: ")
+            Console.WriteLine("Syötä kokonaisluku: ");
+            Console.WriteLine("Syötä kokonaisluku: ");
             int userInputNumberx = int.Parse(Console.WriteLine());
             int userInputNumbery = int.Parse(Console.WriteLine());
             int userInputNumberz = int.Parse(Console.WriteLine());
