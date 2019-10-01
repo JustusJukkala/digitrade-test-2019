@@ -18,19 +18,19 @@ namespace IfTask3
             {
                 if (userInputNumber < 0)
                 {
-                    Console.WriteLine($"Luku {userInputNumber} on negatiivinen!");
+                    Console.Write($"Luku {userInputNumber} on negatiivinen");
                 }
                 else
                 {
-                    Console.WriteLine($"Luku {userInputNumber} on positiivinen!");
+                    Console.Write($"Luku {userInputNumber} on positiivinen");
                 }
                 if (userInputNumber % 2 == 0)
                 {
-                    Console.WriteLine($"Luku {userInputNumber} on parillinen!");
+                    Console.WriteLine(" ja parillinen!");
                 }
                 else
                 {
-                    Console.WriteLine($"Luku {userInputNumber} on pariton!");
+                    Console.WriteLine(" ja pariton!");
                 }
             }
             }
