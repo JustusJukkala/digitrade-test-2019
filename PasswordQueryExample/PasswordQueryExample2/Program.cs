@@ -9,9 +9,9 @@ namespace PasswordQueryExample2
             string password = "qwerty1234";
             Console.WriteLine("Salasanan kysely For-silmukalla");
 
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                Console.Write($"{i+1}. " +
+                Console.Write($"{i + 1}. " +
                     $"Syötä salasana: ");
                 string userInput = Console.ReadLine();
 
