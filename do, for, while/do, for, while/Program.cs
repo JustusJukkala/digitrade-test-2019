@@ -9,11 +9,11 @@ namespace do__for__while
             Console.WriteLine("Ohjelma tulostaa antamasi luvun kertoman!");
             Console.WriteLine("syötä luku!");
             int userInput = int.Parse(Console.ReadLine());
+            int fact = 1;
+            int n = userInput;
 
-            for (int n = 0; n < userInput; n++)
-            {
-                Console.WriteLine
-            }
+
+            //for (int n = 0; n < userInput; n++)
             if (n < 0)
             {
                 Console.WriteLine("Virheellinen syöte!");
@@ -22,8 +22,8 @@ namespace do__for__while
             {
                 while (n > 0)
                 {
-                    fact = fact * n
-                    n = n - 1;
+                    fact = fact * n;
+                    n--;
                 }
             }
             //Tulostaa vastauksen näytölle
