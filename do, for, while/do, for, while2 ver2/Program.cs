@@ -11,14 +11,21 @@ namespace do__for__while2_ver2
             int userInput = int.Parse(Console.ReadLine());
             int sumOfNumbers = 0;
 
-            // Ohjelma logiikka, silmukka
-            for(int i = 0; i< userInput; i++)
+            if (userInput < 0)
             {
-                sumOfNumbers = sumOfNumbers + (i+1);
+                Console.WriteLine("Virheellinen syöte");
             }
+            else
+            {
+                // Ohjelma logiikka, silmukka
+                for (int i = 0; i < userInput; i++)
+                {
+                    sumOfNumbers = sumOfNumbers + (i + 1);
+                }
 
-            Console.WriteLine($"Vastaus: {sumOfNumbers}");
-
+                Console.WriteLine($"Vastaus: {sumOfNumbers}");
+            }
+            
         }
     }
 }
