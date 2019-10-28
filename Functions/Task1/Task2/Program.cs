@@ -14,10 +14,16 @@ namespace Task2
             int b = int.Parse(Console.ReadLine());
         }
 
-        static void minimum()
+        static void Minimum(int x, int y)
         {
-
+            if (x > y)
+            {
+                Console.WriteLine($"Luku {y} on pienempi kuin luku {x} ");
+            }
+            else
+            {
+                Console.WriteLine($"Luku {x} on pienempi kuin luku {y} ");
+            }
         }
-
     }
 }
