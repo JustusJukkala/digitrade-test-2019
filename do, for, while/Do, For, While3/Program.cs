@@ -6,26 +6,28 @@ namespace Do__For__While3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Ohjelma laskee N ensimmäistä lukua yhteen.");
+            Console.WriteLine("Ohjelma laskee N:n ensimmäisen parittoman ja parillisen lukujen summan.");
             Console.WriteLine("Syötä luku: ");
             int userInput = int.Parse(Console.ReadLine());
-            int sumOfNumbers = 0;
-
-            if (userInput < 0)
+            int evenSum = 0;
+            int oddSum = 0;
+            // muuttujat
+            for(int i = 0;i <= userInput; i++)
             {
-                Console.WriteLine("Virheellinen syöte");
-            }
-            else
-            {
-                // Ohjelma logiikka, silmukka
-                for (int i = 0; i < userInput; i++)
+                if (i % 2 == 0)
                 {
-                    sumOfNumbers = sumOfNumbers + (i + 1);
+                    evenSum = evenSum + i;
                 }
-
-                Console.WriteLine($"Vastaus: {sumOfNumbers}");
+                else
+                {
+                    oddSum = oddSum + i;
+                }
             }
+            Console.WriteLine($"Parillisten summa = {evenSum}\n" +
+                $"Parittomien summa = {oddSum}");
+
             /*
+            Epäonnistunut versio
             Console.WriteLine("Ohjelma laskee parittomien summan ja parillisten summan");
             Console.WriteLine("Syötä luku: ");
             int userInput = int.Parse(Console.ReadLine());
