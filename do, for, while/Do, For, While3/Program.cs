@@ -6,6 +6,26 @@ namespace Do__For__While3
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Ohjelma laskee N ensimmäistä lukua yhteen.");
+            Console.WriteLine("Syötä luku: ");
+            int userInput = int.Parse(Console.ReadLine());
+            int sumOfNumbers = 0;
+
+            if (userInput < 0)
+            {
+                Console.WriteLine("Virheellinen syöte");
+            }
+            else
+            {
+                // Ohjelma logiikka, silmukka
+                for (int i = 0; i < userInput; i++)
+                {
+                    sumOfNumbers = sumOfNumbers + (i + 1);
+                }
+
+                Console.WriteLine($"Vastaus: {sumOfNumbers}");
+            }
+            /*
             Console.WriteLine("Ohjelma laskee parittomien summan ja parillisten summan");
             Console.WriteLine("Syötä luku: ");
             int userInput = int.Parse(Console.ReadLine());
@@ -28,7 +48,7 @@ namespace Do__For__While3
                     Console.WriteLine(i);
                 }
             }
-
+            */
         }
     }
 }
