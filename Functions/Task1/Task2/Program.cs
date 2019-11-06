@@ -6,27 +6,36 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Ohjelma kertoo kumpi annetuista numeroista on pienempi");
-            Console.WriteLine("1. Numero: ");
-            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ohjelma selvittää kahdesta luvusta pienemmän minimi -funktion avulla");
+            Console.Write("1. Numero: ");
+            int x = int.Parse(Console.ReadLine());
+            Console.Write("2. Numero: ");
+            int y = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("2. Numero: ");
-            int b = int.Parse(Console.ReadLine());
-            if (Minimum(x, y))
-            {
-
-            }
+            Console.WriteLine($"Luku {GetMinNumber(x,y)} on pienempi kuin {GetMaxNumber(x,y)}");
         }
 
-        static void Minimum(int x, int y)
+        static int GetMinNumber(int firstNumber, int secondNumber)
         {
-            if (x > y)
+            if (firstNumber < secondNumber)
             {
-                Console.WriteLine($"Luku {y} on pienempi kuin luku {x} ");
+                return firstNumber;
             }
             else
             {
-                Console.WriteLine($"Luku {x} on pienempi kuin luku {y} ");
+                return secondNumber;
+            }
+        }
+
+        static int GetMaxNumber(int firstNumber, int secondNumber)
+        {
+            if (firstNumber > secondNumber)
+            {
+                return firstNumber;
+            }
+            else
+            {
+                return secondNumber;
             }
         }
     }
