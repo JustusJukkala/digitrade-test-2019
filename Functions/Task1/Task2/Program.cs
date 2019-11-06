@@ -23,7 +23,7 @@ namespace Task2
         /// <returns>min number</returns>
         static int GetMinNumber(int firstNumber, int secondNumber)
         {
-            if (firstNumber < secondNumber)
+            if (firstNumber < secondNumber) //return firstNumber < secondNumber? firstNumber: secondNumber;
             {
                 return firstNumber;
             }
