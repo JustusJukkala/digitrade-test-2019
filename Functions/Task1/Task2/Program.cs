@@ -15,6 +15,12 @@ namespace Task2
             Console.WriteLine($"Luku {GetMinNumber(x,y)} on pienempi kuin {GetMaxNumber(x,y)}");
         }
 
+        /// <summary>
+        /// Compare two numbers and return min number.
+        /// </summary>
+        /// <param name="firstNumber"></param>
+        /// <param name="secondNumber"></param>
+        /// <returns>min number</returns>
         static int GetMinNumber(int firstNumber, int secondNumber)
         {
             if (firstNumber < secondNumber)
@@ -27,6 +33,12 @@ namespace Task2
             }
         }
 
+        /// <summary>
+        /// Compare two numbers and return max number
+        /// </summary>
+        /// <param name="firstNumber"></param>
+        /// <param name="secondNumber"></param>
+        /// <returns>max number</returns>
         static int GetMaxNumber(int firstNumber, int secondNumber)
         {
             if (firstNumber > secondNumber)
