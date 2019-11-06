@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoopTask4point1", "LoopTask4point1\LoopTask4point1.csproj", "{BF45F269-FA35-4F44-AFF9-6DC0E8D79A66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoopTask4point1", "LoopTask4point1\LoopTask4point1.csproj", "{BF45F269-FA35-4F44-AFF9-6DC0E8D79A66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoopTask4point2", "LoopTask4point2\LoopTask4point2.csproj", "{EC825B94-8E93-4ED2-8F67-ABCFDD94E429}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoopTask4point2", "LoopTask4point2\LoopTask4point2.csproj", "{EC825B94-8E93-4ED2-8F67-ABCFDD94E429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoopTask4point3", "LoopTask4point3\LoopTask4point3.csproj", "{5F89167F-80E3-4995-AF7F-E5DDFFDA1F65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EC825B94-8E93-4ED2-8F67-ABCFDD94E429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC825B94-8E93-4ED2-8F67-ABCFDD94E429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC825B94-8E93-4ED2-8F67-ABCFDD94E429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F89167F-80E3-4995-AF7F-E5DDFFDA1F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F89167F-80E3-4995-AF7F-E5DDFFDA1F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F89167F-80E3-4995-AF7F-E5DDFFDA1F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F89167F-80E3-4995-AF7F-E5DDFFDA1F65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
