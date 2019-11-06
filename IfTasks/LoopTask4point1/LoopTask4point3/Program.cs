@@ -6,7 +6,35 @@ namespace LoopTask4point3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Satunnaislukugeneraattorin harjoittelua harjoitus 4.3");
+            //string message = "";
+
+            // Satunnaislukuolion luonti
+            Random rnd = new Random();
+
+            #region "Kaksi sisäkkäistä silmukkaa, jotka tulostavat riville satunnaislukuja"
+            // Silmukka, joka tulostaa rivit
+            for(int r = 0; r < 4; r++)
+            {
+                Console.Write($"Rivi {r+1}: ");
+
+                // Tulostaa satunnaisluvut riville
+                for (int i = 0; i < 5; i++)
+                {
+                    if (i < 4)
+                    {
+                        Console.Write($"{rnd.Next(0, 51)}, ");
+                    }
+                    else
+                    {
+                        Console.WriteLine(rnd.Next(0,51));
+                    }
+                    //message = $"{message} \n { rnd.Next(0, 51)}";
+                }
+                
+            }
+            #endregion
+            //Console.WriteLine(Math.Round(rnd.NextDouble()));
         }
     }
 }
