@@ -12,6 +12,10 @@ namespace Task2
 
             Console.WriteLine("2. Numero: ");
             int b = int.Parse(Console.ReadLine());
+            if (Minimum(x, y))
+            {
+
+            }
         }
 
         static void Minimum(int x, int y)
