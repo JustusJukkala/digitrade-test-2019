@@ -6,7 +6,9 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world!");
+            Console.WriteLine("Ohjelma kysyy 10 kokonaislukua ja palauttaa niistä suurimman.");
+            Console.WriteLine("Ohjelmalle kelpaa vain positiiviset kokonaisluvut");
+
         }
     }
 }
