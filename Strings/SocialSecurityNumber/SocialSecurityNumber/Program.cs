@@ -9,8 +9,8 @@ namespace SocialSecurityNumber
             Console.WriteLine("Ohjelma tarkastaa Hetun oikeellisuuden.");
             string userInput = "140296-137U";
             int idNumber = InputParser(userInput);
-            IsValidID(idNumber);
-
+            bool isOK = IsValidID(idNumber, 'T');
+            PrintResult(isOK);
 
         }
 
@@ -24,14 +24,27 @@ namespace SocialSecurityNumber
             return int.Parse(removed);
         }
 
-        static bool IsValidID(int idNumber)
+        static bool IsValidID(int idNumber, char userInputChkMark)
         {
             string chkMark = "0123456789ABCDEFHJKLMNPRSTUVWXY";
 
             int modChecker = idNumber % 31;
 
-            Console.WriteLine(chkMark[modChecker]);
-            return true;
+            // Vertaile onko käyttäjän syöttämä viimeinen merkki sama kuin laskettu
+            if (chkMark[modChecker] == userInputChkMark)
+                return true;
+            else
+                return false;
+            //return chkMark[modChecker] == userInputChkMark;
         }
+
+        static void PrintResult(bool isValidID)
+        {
+            if(isValidID)
+                Console.WriteLine("Sotu on oikein!");
+            else
+                Console.WriteLine("Sotu on väärin!");
+        }
+
     }
 }
