@@ -6,7 +6,30 @@ namespace SocialSecurityNumber
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Ohjelma tarkastaa Hetun oikeellisuuden.");
+            // Console.WriteLine("Ohjelma tarkastaa Hetun oikeellisuuden.");
+            char userChoice;
+            do
+            {
+                Console.Clear();
+                userChoice = UserInterface();
+                switch (userChoice)
+                {
+                    case 'T':
+
+                        break;
+
+                    case 'U':
+
+                        break;
+
+                    default:
+
+                        Console.WriteLine("Tarkasta mitä painoit!");
+                        break;
+                }
+            }
+            while (userChoice != 'X');
+
             string userInput = Console.ReadLine();
 
             userInput = RemoveSpaces(userInput);
@@ -34,6 +57,8 @@ namespace SocialSecurityNumber
             Console.WriteLine("[U] Luo uusi henkilötunnus.");
             Console.WriteLine("[X] Sulje ohjelma.");
             Console.Write("Valitse mitä tehdään: ");
+
+            return char.ToUpper(Console.ReadKey().KeyChar);
         }
 
         static bool IsValidDate(string userInput)
