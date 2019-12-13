@@ -7,11 +7,46 @@ namespace SocialSecurityNumber
         static void Main(string[] args)
         {
             Console.WriteLine("Ohjelma tarkastaa Hetun oikeellisuuden.");
-            string userInput = "140296-137U";
-            int idNumber = InputParser(userInput);
-            bool isOK = IsValidID(idNumber, 'T');
-            PrintResult(isOK);
+            string userInput = " 140296 - 137 U ";
 
+            userInput = RemoveSpaces(userInput);
+            if (IsValidLenght(userInput))
+            {
+                int idNumber = InputParser(userInput);
+                char getLastChar = GetUserInputChkMark(userInput);
+                bool isOK = IsValidID(idNumber, getLastChar);
+                PrintResult(isOK);
+            }
+        }
+
+        static bool IsValidDate(string userInput)
+        {
+            //if (userInput.StartsWith('4')) väärin
+            //    return false;
+            bool result = false;
+
+            return result;
+        }
+
+        static bool IsValidLenght(string userInput)
+        {
+            return userInput.Length == 11;
+
+            //if (userInput.Length == 11)
+            //    return true;
+            //else
+            //    return false;
+        }
+
+        static string RemoveSpaces(string userInput)
+        {
+            string result = userInput.Replace(" ","");
+            return result;
+        }
+
+        static char GetUserInputChkMark(string userInput)
+        {
+            return userInput[userInput.Length - 1];
         }
 
         static int InputParser(string stringParser)
@@ -21,6 +56,7 @@ namespace SocialSecurityNumber
 
             string removed = stringParser.Remove(10, 1);
             removed = removed.Remove(6, 1);
+
             return int.Parse(removed);
         }
 
