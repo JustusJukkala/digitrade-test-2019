@@ -7,16 +7,33 @@ namespace SocialSecurityNumber
         static void Main(string[] args)
         {
             Console.WriteLine("Ohjelma tarkastaa Hetun oikeellisuuden.");
-            string userInput = " 140296 - 137 U ";
+            string userInput = Console.ReadLine();
 
             userInput = RemoveSpaces(userInput);
             if (IsValidLenght(userInput))
             {
-                int idNumber = InputParser(userInput);
-                char getLastChar = GetUserInputChkMark(userInput);
-                bool isOK = IsValidID(idNumber, getLastChar);
-                PrintResult(isOK);
+                if (IsValidDate(userInput))
+                {
+                    int idNumber = InputParser(userInput);
+                    char getLastChar = GetUserInputChkMark(userInput);
+                    bool isOK = IsValidID(idNumber, getLastChar);
+                    PrintResult(isOK);
+                }
             }
+            else
+            {
+                Console.WriteLine("Tarkasta hetun oikeellisuus - liikaa merkkejä");
+            }
+        }
+
+
+        static char UserInterface()
+        {
+            Console.WriteLine("Henkilötunnuksen käsittely.");
+            Console.WriteLine("[T] Tarkista henkilötunnuksen oikeellisuus.");
+            Console.WriteLine("[U] Luo uusi henkilötunnus.");
+            Console.WriteLine("[X] Sulje ohjelma.");
+            Console.Write("Valitse mitä tehdään: ");
         }
 
         static bool IsValidDate(string userInput)
@@ -24,7 +41,35 @@ namespace SocialSecurityNumber
             //if (userInput.StartsWith('4')) väärin
             //    return false;
             bool result = false;
+            string day = userInput.Substring(0, 2);
+            string month = userInput.Substring(2, 2);
+            string year = userInput.Substring(4, 2);
+            string century = userInput.Substring(6, 1);
 
+            if(century == "-")
+            {
+                year = "19" + year;
+            }
+            else if(century == "A")
+            {
+                year = "20" + year;
+            }
+            else
+            {
+                Console.WriteLine("Väärä vuosisata");
+                return result; // Keskeytetään ohjelman suoritus
+            }
+            // Tarkastetaan päivämäärän oikeellisuus try-catch lohkossa
+            try
+            {
+                DateTime birthday = new DateTime(int.Parse(year), int.Parse(month), int.Parse(day));
+                result = true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
             return result;
         }
 
