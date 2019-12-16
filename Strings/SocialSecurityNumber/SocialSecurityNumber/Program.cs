@@ -15,11 +15,11 @@ namespace SocialSecurityNumber
                 switch (userChoice)
                 {
                     case 'T':
-                        SSNChecker();
+                        SSNChecker(); // Kutsutaan Sotun tarkastus funktiota
                         break;
 
                     case 'U':
-
+                        SSNCreator(); // Kutsutaan Sotun luonti funktiota
                         break;
 
                     case 'X':
@@ -33,19 +33,31 @@ namespace SocialSecurityNumber
                         break;
                 }
 
-            }while (userChoice != 'X');
+            } while (userChoice != 'X');
+        }
+        static void SSNCreator()
+        {
+            Console.Write("\nAnna luotavan sotun alkuosa [PPKKVV-XXX]: "); // " 13 10 52 - 308"
+            string userInput = Console.ReadLine();
+
+            userInput = RemoveSpaces(userInput); // "131052-308"
+            if (IsValidLength(userInput, 10))
+            {
+                if (IsValidDate(userInput))
+                {
+
+                }
+            }
+
+        }
 
             static void SSNChecker()
             {
-
-
-
-
-                Console.Write("\nAnna Tarkastettava sotu: ");
+                Console.Write("\nAnna Tarkastettava sotu [PPKKVV-XXXT]: ");
                 string userInput = Console.ReadLine();
 
                 userInput = RemoveSpaces(userInput);
-                if (IsValidLenght(userInput))
+                if (IsValidLength(userInput))
                 {
                     if (IsValidDate(userInput))
                     {
@@ -55,7 +67,6 @@ namespace SocialSecurityNumber
                         PrintResult(isOK);
                     }
                 }
-
                 else
                 {
                     Console.WriteLine("Tarkasta hetun oikeellisuus - liikaa merkkejä");
@@ -75,8 +86,6 @@ namespace SocialSecurityNumber
 
                 static bool IsValidDate(string userInput)
                 {
-                    //if (userInput.StartsWith('4')) väärin
-                    //    return false;
                     bool result = false;
                     string day = userInput.Substring(0, 2);
                     string month = userInput.Substring(2, 2);
@@ -110,7 +119,7 @@ namespace SocialSecurityNumber
                     return result;
                 }
 
-                static bool IsValidLenght(string userInput)
+                static bool IsValidLength(string userInput)
                 {
                     return userInput.Length == 11;
 
@@ -120,7 +129,18 @@ namespace SocialSecurityNumber
                     //    return false;
                 }
 
-                static string RemoveSpaces(string userInput)
+        /// <summary>
+        /// Check is uder
+        /// </summary>
+        /// <param name="userInput"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        static bool IsValidLength(string userInput, int length)
+        {
+            return userInput.Length == length;
+        }
+
+        static string RemoveSpaces(string userInput)
                 {
                     string result = userInput.Replace(" ", "");
                     return result;
@@ -133,10 +153,13 @@ namespace SocialSecurityNumber
 
                 static int InputParser(string stringParser)
                 {
-                    // Luetaan 
-                    //string result = stringParser.Substring(0, 6);
-
-                    string removed = stringParser.Remove(10, 1);
+            string removed = "";
+            // Testataan stringParser -muuttujan pituus
+            // jos pituus on yli 10 niin poistetaan viimeinen merkki
+            if (stringParser.Length > 10) 
+            {
+                removed = stringParser.Remove(10, 1);
+            }
                     removed = removed.Remove(6, 1);
 
                     return int.Parse(removed);
@@ -167,6 +190,6 @@ namespace SocialSecurityNumber
             
 
           
-        }
+        
     }
 }
