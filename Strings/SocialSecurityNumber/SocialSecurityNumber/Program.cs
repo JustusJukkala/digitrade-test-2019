@@ -45,7 +45,10 @@ namespace SocialSecurityNumber
             {
                 if (IsValidDate(userInput))
                 {
-
+                    int idNumber = InputParser(userInput); // idNumber on luku "131052308"
+                    char getValidationMark = GetValidationMark(idNumber);
+                    PrintCreatedSSNumber(userInput + getValidationMark);
+                    PrintCreatedSSNumber($"{userInput} + {getValidationMark}");
                 }
             }
 
@@ -119,6 +122,12 @@ namespace SocialSecurityNumber
                     return result;
                 }
 
+        /// <summary>
+        /// Check is userInput correct length.
+        /// Default length is 11. Return true or false
+        /// </summary>
+        /// <param name="userInput"></param>
+        /// <returns></returns>
                 static bool IsValidLength(string userInput)
                 {
                     return userInput.Length == 11;
@@ -130,7 +139,8 @@ namespace SocialSecurityNumber
                 }
 
         /// <summary>
-        /// Check is uder
+        /// Check is userInput correct length.
+        /// Variable length is correct length. Return true or false
         /// </summary>
         /// <param name="userInput"></param>
         /// <param name="length"></param>
@@ -153,7 +163,7 @@ namespace SocialSecurityNumber
 
                 static int InputParser(string stringParser)
                 {
-            string removed = "";
+            string removed = stringParser;
             // Testataan stringParser -muuttujan pituus
             // jos pituus on yli 10 niin poistetaan viimeinen merkki
             if (stringParser.Length > 10) 
@@ -178,14 +188,27 @@ namespace SocialSecurityNumber
                         return false;
                     //return chkMark[modChecker] == userInputChkMark;
                 }
-            
-                static void PrintResult(bool isValidID)
+
+        static char GetValidationMark(int idNumber)
+        {
+            string chkMark = "0123456789ABCDEFHJKLMNPRSTUVWXY";
+
+            int modChecker = idNumber % 31;
+
+                return chkMark[modChecker];
+        }
+
+        static void PrintResult(bool isValidID)
                 {
                     if (isValidID)
                         Console.WriteLine("Sotu on oikein!");
                     else
                         Console.WriteLine("Sotu on väärin!");
                 }
+        static void PrintCreatedSSNumber(string newSSNumber)
+        {
+            Console.WriteLine($"Luotu sotu on: {newSSNumber}");
+        }
             
             
 
