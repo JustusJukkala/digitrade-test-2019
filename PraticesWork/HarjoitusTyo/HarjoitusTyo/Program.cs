@@ -43,19 +43,41 @@ namespace HarjoitusTyo
                         }
                         break;
                     case '2':
-                        try
-                        {
-
-                        }
-                        catch
-                        {
-
-                        }
+                        ReferenceNumberCreator();
+                        Console.WriteLine("Paina mitä vain näppäintä jatkaakseksi.");
+                        Console.ReadKey();
                         break;
                     case '3':
                         try
                         {
-
+                            Console.Write("Kuinka monta viitenumeroa haluat luoda?: ");
+                            int count = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Mikä on viitenumeron alkuosa? (3-19 numeroa): ");
+                            string baseNumber = Console.ReadLine();
+                            if (IsNumber(baseNumber) == true && ValidLenght(baseNumber, 3, 19) == true && FirstNumberNotZero(baseNumber) == true )
+                            {
+                                CreateMultipleReferenceNumbers(baseNumber, count);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Jokin meni pieleen. Tarkista viitenumeron alkuosa ja kokeile uudestaan.");
+                            }
+                            Console.WriteLine("Paina mitä vain näppäintä jatkaaksesi.");
+                            Console.ReadKey();
+                        }
+                        catch
+                        {
+                            Console.WriteLine($"Virheellinen syöte. Paina mitä vain näppäintä jatkaaksesi");
+                            Console.ReadKey();
+                        }
+                        break;
+                    case '4':
+                        try
+                        {
+                            Console.WriteLine("Tekstitiedostossa olevat viitenumerot.");
+                            ReadFile(@"../../../Referencenumber.txt");
+                            Console.WriteLine("Paina mitä vain näppäintä jatkaaksesi");
+                            Console.ReadLine();
                         }
                         catch
                         {
@@ -81,6 +103,7 @@ namespace HarjoitusTyo
             Console.WriteLine("[1] Tarkista viitenumeron oikeillisuus");
             Console.WriteLine("[2] Luo uusi viitenumero");
             Console.WriteLine("[3] Luo useampi viitenumero");
+            Console.WriteLine("[4] Näytä luodut viitenumerot");
             Console.WriteLine("[X] Lopeta ohjelman suoritus");
             Console.Write("Mitä haluat tehdä: ");
             return char.ToUpper(Console.ReadKey().KeyChar);
@@ -214,7 +237,76 @@ namespace HarjoitusTyo
             }
         }//Numeroiden tarkistus päättyy
 
+        static void ReferenceNumberCreator()
+        {
+            Console.WriteLine("Syötä viitenumeron alkuosa.");
+            Console.WriteLine("Alkuosa koostu 3 - 19 numerosta");
+            string input = Console.ReadLine();
 
+            int i = 0;
+            if (CheckReferenceNumberValidity(input) == true && IsNumber(input) == true 
+                && ValidLenght(input, 3, 19) == true && FirstNumberNotZero(input) == true)
+            {
+                Console.WriteLine($"Syötetty viitenumero {AddSpaces(input)} on jo oikea viitenumero.");
+            }
+            else if (CheckReferenceNumberValidity(input) == false)
+            {
+                while (CheckReferenceNumberValidity(input) == false)
+                {
+                    if (CheckReferenceNumberValidity(input + i) == false)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        input += i;
+                        Console.WriteLine($"Uusi viitenumero on: {AddSpaces(input)}");
+                        WriteToFile(@"../../../Referencenumber.txt", AddSpaces(input));
+                    }
+                }
+            }
+
+        }//Viitenumeron luonti päättyy
+
+        static void CreateMultipleReferenceNumbers(string baseNumberValue, int countValue)
+        {
+            int i = 0;
+            string path = @"../../../Referencenumber.txt";
+            string baseNumber = baseNumberValue;
+            for (int j = 0; j < countValue; j++)
+            {
+                if (CheckReferenceNumberValidity(baseNumber + i) == true)
+                {
+                    Console.WriteLine($"{AddSpaces(baseNumber + i)} on uusi viitenumero.");
+                    WriteToFile(path, AddSpaces(baseNumber + 1));
+                    i++;
+                }
+                else
+                {
+                    i++;
+                    j--;
+                }
+                
+            }
+        }//Useamman viitenumeron luonti päättyy
+
+        static void WriteToFile(string path, string inputValue)
+        {
+            using StreamWriter sw = new StreamWriter(path, true);
+            sw.WriteLine(inputValue);
+        }//Tiedostoon kirjoittaminen päättyy
+
+        static void ReadFile(string path)
+        {
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s;
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+        }
 
     }
 }
