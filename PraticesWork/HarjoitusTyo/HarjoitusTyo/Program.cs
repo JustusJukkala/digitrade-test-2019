@@ -24,8 +24,8 @@ namespace HarjoitusTyo
                         {
                             Console.Write("Syötä viitenumero, jonka haluat tarkistaa:");
                             input = InputValue(input, 4, 20);
-                            if (CheckReferenceNumberValidity(input) == true && isNumber(input) == true
-                                && validLenght(input, 4, 20) == true && FirstNumberNotZero(input) == true)
+                            if (CheckReferenceNumberValidity(input) == true && IsNumber(input) == true
+                                && ValidLenght(input, 4, 20) == true && FirstNumberNotZero(input) == true)
                             {
                                 Console.WriteLine($"Syöttämäsi luku {AddSpaces(input)} on oikea viitenumero.");
                             }
@@ -86,7 +86,7 @@ namespace HarjoitusTyo
             return char.ToUpper(Console.ReadKey().KeyChar);
         }//Käyttöliittymä päättyy
 
-        static bool CheckReferenceNumberValidity(string)
+        static bool CheckReferenceNumberValidity(string inputValue)//Tarkistaa viitenumeron ja antaa tarkistus numeron
         {
             int summary = 0;
             char lastNumber;
@@ -133,7 +133,7 @@ namespace HarjoitusTyo
 
         }//Numeron tarkistus päättyy
 
-        static string InputValue(string Input, int minValue, int maxValue)
+        static string InputValue(string InputValue, int minValue, int maxValue)//Määrittää syötteen
         {
             Console.WriteLine($"Viitenumerossa voi vain olla numeroita ja numeroita väliltä {minValue} - {maxValue}.");
             Console.Write("Syötä numero: ");
@@ -146,6 +146,40 @@ namespace HarjoitusTyo
             input = input.Replace("-", "");
             return input;
         }//Numeron syöttäminen päättyy
+
+        static bool ValidLenght(string input, int minValue, int maxValue)
+        {
+            if (input.Length < minValue || input.Length > maxValue)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }//Oikean pituuden tarkistus loppuu
+
+        static string ReverseString(string inputValue)
+        {
+            char[] yare = inputValue.ToCharArray();
+            Array.Reverse(yare);
+            return new string(yare);
+
+        }//stringin kääntäminen päättyy
+
+        static string AddSpaces(string inputValue)//Lisää välejä 5 merkin välein
+        {
+            String input = ReverseString(inputValue);
+
+            for (int i = 5; i < input.Length; i += 5)
+            {
+                input = input.Insert(i, " ");
+                i++;
+            }
+
+            return ReverseString(input);
+
+        }//Välien lisääminen päättyy
 
     }
 }
