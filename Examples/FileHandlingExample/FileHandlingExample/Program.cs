@@ -28,7 +28,6 @@ namespace FileHandlingExample
             }
         }
 
-
         static void ReadFile(string path)
         {
             // Open the file to read from.
