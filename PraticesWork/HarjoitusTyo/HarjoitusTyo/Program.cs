@@ -22,11 +22,24 @@ namespace HarjoitusTyo
                     case '1':
                         try
                         {
-
+                            Console.Write("Syötä viitenumero, jonka haluat tarkistaa:");
+                            input = InputValue(input, 4, 20);
+                            if (CheckReferenceNumberValidity(input) == true && isNumber(input) == true
+                                && validLenght(input, 4, 20) == true && FirstNumberNotZero(input) == true)
+                            {
+                                Console.WriteLine($"Syöttämäsi luku {AddSpaces(input)} on oikea viitenumero.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Syöttämäsi viitenumeroa ei ole oikea");
+                            }
+                            Console.WriteLine("Paina mitä vain näppäintä ohjelman suorituksen jatkamiseksi");
+                            Console.ReadKey();
                         }
                         catch
                         {
-
+                            Console.WriteLine($"Väärä syöte, paina mitä vain näppäintä jatkaakseksi");
+                            Console.ReadLine();
                         }
                         break;
                     case '2':
@@ -71,7 +84,68 @@ namespace HarjoitusTyo
             Console.WriteLine("[X] Lopeta ohjelman suoritus");
             Console.Write("Mitä haluat tehdä: ");
             return char.ToUpper(Console.ReadKey().KeyChar);
-        }
+        }//Käyttöliittymä päättyy
+
+        static bool CheckReferenceNumberValidity(string)
+        {
+            int summary = 0;
+            char lastNumber;
+            int numberLength = 0;
+            numberLength = inputValue.Length;
+            lastNumber = inputValue[numberLength - 1];
+            inputValue = inputValue.Remove(numberLength - 1, 1);
+
+
+            int n = 3;
+            for (int i = inputValue.Length - 1; i >= 0; i--)
+            {
+
+                if (n == 3)
+                {
+                    summary = summary + int.Parse(inputValue[i].ToString()) * 7;
+
+                    n--;
+                }
+                else if (n == 2)
+                {
+                    summary = summary + int.Parse(inputValue[i].ToString()) * 3;
+
+                    n--;
+                }
+                else if (n == 1)
+                {
+                    summary = summary + int.Parse(inputValue[i].ToString()) * 1;
+
+                    n = 3;
+                }
+            }
+
+            int numberValidator = summary + int.Parse(lastNumber.ToString());
+
+            if (numberValidator % 10 == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }//Numeron tarkistus päättyy
+
+        static string InputValue(string Input, int minValue, int maxValue)
+        {
+            Console.WriteLine($"Viitenumerossa voi vain olla numeroita ja numeroita väliltä {minValue} - {maxValue}.");
+            Console.Write("Syötä numero: ");
+            string input = Console.ReadLine();
+            //Nämä neljä korvaavat välit, pisteet, pilkut ja viivat syötteestä, eli voi antaa viitenumeron
+            //kortissa olevassa muodossa ja tämä muuttaa sen pelkiksi numeroiksi.
+            input = input.Replace(" ", "");
+            input = input.Replace(".", "");
+            input = input.Replace(",", "");
+            input = input.Replace("-", "");
+            return input;
+        }//Numeron syöttäminen päättyy
 
     }
 }
