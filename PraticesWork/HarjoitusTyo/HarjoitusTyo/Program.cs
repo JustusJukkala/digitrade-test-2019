@@ -181,5 +181,40 @@ namespace HarjoitusTyo
 
         }//Välien lisääminen päättyy
 
+        static bool FirstNumberNotZero(string inputValue)//Tarkistaa onko ensimmäinen numero nolla vai ei
+        {
+            if (inputValue[0].ToString() != "0")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }//Ensimmäisen numeron tarkistus päättyy
+
+        static bool IsNumber(string inputValue)
+        {
+            int n = 0;
+            for (int i = 0; i < inputValue.Length; i++)
+            {
+                bool tryParse = int.TryParse(inputValue[i].ToString(), out _);
+                if (tryParse == false)
+                {
+                    n++;
+                }
+            }
+            if (n == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }//Numeroiden tarkistus päättyy
+
+
+
     }
 }
